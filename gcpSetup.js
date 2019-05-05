@@ -1,4 +1,7 @@
 require('dotenv').config()
 const fs = require('fs')
 
-fs.writeFile(process.env.GC_CRED, process.env.GOOGLE_APPLICATION_CREDENTIALS, err => {})
+const keys = process.env.GC_CRED
+if(keys) {
+    fs.writeFile(process.env.GOOGLE_APPLICATION_CREDENTIALS, keys, err => {})
+}
