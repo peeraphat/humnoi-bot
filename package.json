@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node .",
+    "start": "node gcpSetup.js && node .",
     "preinstall": "node gcpSetup.js",
     "develop": "pm2 start src/index.js --watch && pm2 logs",
     "delete": "pm2 delete src/index.js",
