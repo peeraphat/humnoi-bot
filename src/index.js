@@ -22,7 +22,7 @@ app.post('/callback', line.middleware(config), (req, res) => {
 })
 
 app.get('/', (req, res) => {
-    res.end('hello humnoi 🤖')
+    res.end('hello humnoi.')
 })
 
 async function handleEvent(event) {
