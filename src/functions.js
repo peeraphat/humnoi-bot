@@ -1,5 +1,6 @@
 const _get = require('lodash/get')
 const duration = require('./duration')
+const weather = require('./weather')
 
 const routes = {
     'functions': {
@@ -11,6 +12,14 @@ const routes = {
                 const destination = `${dest_lat}, ${dest_lon}`
 
                 duration(userId, origin, destination)
+            }
+        }, 
+        'weather': {
+            'done': (userId, data) => {
+                const dest_lat = _get(data, 'outputContexts.0.parameters.fields.latitude.stringValue', '')
+                const dest_lon = _get(data, 'outputContexts.0.parameters.fields.longitude.stringValue', '')
+
+                weather(userId, dest_lat, dest_lon)
             }
         }
     }

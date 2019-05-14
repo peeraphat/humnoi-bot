@@ -4,7 +4,6 @@ const config = {
     channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
     channelSecret: process.env.CHANNEL_SECRET,
 }
-
 const client = new line.Client(config)
 
 const googleMapsClient = require('@google/maps').createClient({
@@ -29,14 +28,10 @@ module.exports = (token, origin, destination) => {
             distance,
             duration
         } = res.json.routes[0].legs[0]
-        // console.dir(res.json.routes, {depth: null})
-        // console.log('------------------')
-        console.log('distance', distance.text, 'duration', duration.text)
         const echo = {
             type: 'text',
             text: `ห่างจากตรงนี้ ${distance.text} ใช้เวลาเดินทางประมาณ ${duration.text}`
         }
-        // console.log('echo', echo)
         return await client.replyMessage(token, echo)
     })
 }

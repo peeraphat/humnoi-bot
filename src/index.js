@@ -10,7 +10,9 @@ const config = {
 }
 const client = new line.Client(config)
 
-app.use(cors({ origin: true }))
+app.use(cors({
+    origin: true
+}))
 app.post('/callback', line.middleware(config), (req, res) => {
     Promise
         .all(req.body.events.map(handleEvent))
@@ -67,5 +69,6 @@ async function handleEvent(event) {
     return client.replyMessage(event.replyToken, echo)
 }
 
-app.listen(process.env.PORT, () => {console.log(`Online ${process.env.PORT}`)} ) 
-// exports.app = firebaseFunctions.https.onRequest(app)
+app.listen(process.env.PORT, () => {
+    console.log(`Online ${process.env.PORT}`)
+})
