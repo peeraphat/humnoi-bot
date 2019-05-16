@@ -66,7 +66,9 @@ async function handleEvent(event) {
     };
 
     // use reply API
-    return client.replyMessage(event.replyToken, echo)
+    if(responseText) {
+        return client.replyMessage(event.replyToken, echo)
+    }
 }
 
 app.listen(process.env.PORT, () => {
