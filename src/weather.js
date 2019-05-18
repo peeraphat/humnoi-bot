@@ -21,7 +21,7 @@ module.exports = async (token, lat, lon) => {
 
         return await client.replyMessage(token, {
             type: 'text',
-            text: `@${name} ${parseInt(main.temp)}Cํ สภาพอากาศ ${weather[0].main} รายละเอียด ${weather[0].description}`
+            text: `@${name} ${parseInt(main.temp)} C สภาพอากาศ ${weather[0].main} รายละเอียด ${weather[0].description}`
         })
     } catch (err) {
         console.dir(err)
