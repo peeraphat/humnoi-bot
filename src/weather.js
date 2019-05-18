@@ -10,17 +10,18 @@ const client = new line.Client(config)
 
 module.exports = async (token, lat, lon) => {
     try {
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.OPEN_WEATHER_API}`
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.OPEN_WEATHER_API}&units=metric`
         const res = await rp(url)
         const results = JSON.parse(res)
         const {
             name,
-            weather
+            weather,
+            main
         } = results
 
         return await client.replyMessage(token, {
             type: 'text',
-            text: `@${name} สภาพอากาศ ${weather[0].main} รายละเอียด ${weather[0].description}`
+            text: `@${name} ${parseInt(main.temp)}Cํ สภาพอากาศ ${weather[0].main} รายละเอียด ${weather[0].description}`
         })
     } catch (err) {
         console.dir(err)
