@@ -15,12 +15,16 @@ const googleMapsClient = require('@google/maps').createClient({
 // }, (err, res) => {
 //     console.dir(res.json.results, {depth: null})
 // })
-module.exports = (token, origin, destination) => {
+module.exports = (token, origin, destination, highways) => {
+    const avoid = []
+    if(!highways) {
+        avoid.push('highways')
+    }
     return googleMapsClient.directions({
         origin: origin.split(','), //['13.638406', '100.500629'],
         destination: destination.split(','), //['13.674024', '100.465910'],
         mode: 'driving',
-        avoid: ['highways'],
+        avoid: avoid, //['highways'],
         optimize: true,
         alternatives: false
     }, async (err, res) => {

@@ -9,10 +9,11 @@ const routes = {
                 const destination = _get(data, 'outputContexts.0.parameters.fields.homeGeoLocation.stringValue', '')
                 const dest_lat = _get(data, 'outputContexts.0.parameters.fields.latitude.stringValue', '')
                 const dest_lon = _get(data, 'outputContexts.0.parameters.fields.longitude.stringValue', '')
+                const hightWay = _get(data, 'outputContexts.0.parameters.fields.hightWay.stringValue', '')
                 const origin = `${dest_lat}, ${dest_lon}`
 
-                console.log({ userId, origin, destination })
-                duration(userId, origin, destination)
+                console.log({ userId, origin, destination, hightWay })
+                duration(userId, origin, destination, hightWay)
             }
         }, 
         'weather': {
