@@ -20,6 +20,7 @@ module.exports = (token, origin, destination) => {
         origin: origin.split(','), //['13.638406', '100.500629'],
         destination: destination.split(','), //['13.674024', '100.465910'],
         mode: 'driving',
+        avoid: ['highways'],
         optimize: true,
         alternatives: false
     }, async (err, res) => {
